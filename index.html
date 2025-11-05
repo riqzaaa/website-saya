@@ -1,1 +1,262 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portofolio Riqza — proyek, keterampilan, kontak. Dibuat dengan HTML, CSS, & JavaScript." />
+  <title>Portofolio — Riqza</title>
+
+  <!-- Favicon (simple base64 SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%232b6cb0'/%3E%3Ctext x='50' y='58' font-size='48' text-anchor='middle' fill='white' font-family='Arial'%3ER%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* ====== Reset & basics ====== */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#4f46e5; --glass: rgba(255,255,255,0.04);
+      --max-width:1100px; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,var(--bg),#071226 120%); color:#e6eef8; -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* ====== Layout ====== */
+    .container{max-width:var(--max-width); margin:24px auto; padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;box-shadow:0 6px 20px rgba(79,70,229,0.15)}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:15px}
+    nav a:hover{background:var(--glass);color:#fff}
+    .cta{background:linear-gradient(90deg,var(--accent),#06b6d4);padding:8px 14px;border-radius:10px;font-weight:600}
+
+    /* ====== Hero ====== */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin:28px 0}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:28px;border-radius:var(--radius);box-shadow:0 8px 40px rgba(2,6,23,0.6);backdrop-filter:blur(6px)}
+    h1{margin:0 0 8px 0;font-size:34px}
+    .lead{color:var(--muted);margin-bottom:18px}
+    .skills-inline{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    .profile-card{background:linear-gradient(180deg,#071423 60%,#08203a);padding:20px;border-radius:12px;text-align:center}
+    .avatar{width:120px;height:120px;border-radius:18px;margin:0 auto 12px;display:block;object-fit:cover;border:4px solid rgba(255,255,255,0.06)}
+    .role{color:var(--muted);font-size:14px}
+
+    /* ====== Sections ====== */
+    section{margin:36px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .project-img{height:160px;border-radius:10px;object-fit:cover;margin-bottom:12px}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.grid-3{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){.grid-3{grid-template-columns:1fr} nav{display:none} .container{padding:16px}}
+
+    /* contact */
+    form{display:grid;gap:12px}
+    input,textarea{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:8px;color:inherit}
+    button[type=submit]{background:var(--accent);border:none;padding:12px 14px;border-radius:10px;color:white;font-weight:600;cursor:pointer}
+    small{color:var(--muted)}
+
+    footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--muted)}
+
+    /* subtle animations */
+    .reveal{opacity:0;transform:translateY(10px);transition:all 520ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">R</div>
+        <div>
+          <div style="font-weight:700">Riqza</div>
+          <div style="font-size:12px;color:var(--muted)">Web Developer | Desainer UI</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navigasi utama">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card reveal" id="hero-left">
+          <h1>Hai — saya Riqza.</h1>
+          <p class="lead">Saya seorang pelajar SMK Nurul Jadid yang fokus membuat antarmuka web modern dan performa cepat. Saya membuat proyek yang mudah dipelihara, aksesibel, dan responsif.</p>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+            <a href="#projects" class="cta">Lihat Proyek</a>
+            <a href="#contact" style="padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Unduh CV</a>
+          </div>
+
+          <div>
+            <div style="font-weight:700;margin-bottom:8px">Tools & Tech</div>
+            <div class="skills-inline">
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Responsive</span>
+              <span class="chip">Accessibility</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card reveal" id="hero-right">
+          <!-- Ganti src avatar sesuai foto Anda -->
+          <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Avatar Riqza">
+          <div style="font-weight:700">Riqza</div>
+          <div class="role">Pelajar SMK Nurul Jadid</div>
+          <div style="margin-top:12px;font-size:14px;color:var(--muted)">Sedang mencari peluang magang dan proyek freelance kecil.</div>
+        </aside>
+      </section>
+
+      <section id="projects">
+        <h2>Proyek Terpilih</h2>
+        <p class="lead">Kumpulan proyek yang menonjol — klik untuk melihat detail.</p>
+
+        <div class="grid-3">
+          <article class="card reveal" tabindex="0">
+            <img class="project-img" src="https://images.unsplash.com/photo-1526378722461-06a5b6b7b3d3?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project A">
+            <h3>Website Sekolah</h3>
+            <p class="muted">Situs informasi untuk SMK — responsif, SEO-friendly, form pendaftaran.</p>
+            <div style="margin-top:10px"><button data-project="1">Lihat</button></div>
+          </article>
+
+          <article class="card reveal" tabindex="0">
+            <img class="project-img" src="https://images.unsplash.com/photo-1526378722461-06a5b6b7b3d3?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project B">
+            <h3>Aplikasi Portofolio</h3>
+            <p class="muted">SPA sederhana menggunakan vanilla JS — fokus performa dan aksesibilitas.</p>
+            <div style="margin-top:10px"><button data-project="2">Lihat</button></div>
+          </article>
+
+          <article class="card reveal" tabindex="0">
+            <img class="project-img" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project C">
+            <h3>Mini E-commerce</h3>
+            <p class="muted">Prototype toko online: layout, keranjang, checkout (mock).</p>
+            <div style="margin-top:10px"><button data-project="3">Lihat</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Kemampuan</h2>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="card reveal">
+            <h4>Front-end</h4>
+            <p class="muted">HTML semantik, CSS modern (Flexbox & Grid), accessibility, performance.</p>
+          </div>
+          <div class="card reveal">
+            <h4>JavaScript</h4>
+            <p class="muted">Vanilla JS, DOM manipulation, form validation, fetch API basics.</p>
+          </div>
+          <div class="card reveal">
+            <h4>Design</h4>
+            <p class="muted">UI layout, prototyping, responsive design, basic Figma workflow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Kontak</h2>
+        <p class="lead">Tertarik bekerja sama? Kirim pesan singkat lewat form ini.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+          <form class="card reveal" id="contactForm" aria-label="Form kontak">
+            <label>
+              <small>Nama</small>
+              <input type="text" name="name" required placeholder="Nama lengkap" />
+            </label>
+            <label>
+              <small>Email</small>
+              <input type="email" name="email" required placeholder="email@domain.com" />
+            </label>
+            <label>
+              <small>Pesan</small>
+              <textarea name="message" rows="5" required placeholder="Halo, saya tertarik..."></textarea>
+            </label>
+            <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+              <small id="formStatus"></small>
+              <button type="submit">Kirim Pesan</button>
+            </div>
+          </form>
+
+          <aside class="card reveal" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+            <div><strong>Email</strong><div class="muted">riqza@example.com</div></div>
+            <div><strong>Lokasi</strong><div class="muted">Bondowoso, Indonesia</div></div>
+            <div><strong>CV</strong><div class="muted">Tersedia atas permintaan</div></div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <small>© <span id="year"></span> Riqza — Dibuat dengan ❤️ • Template portofolio responsif</small>
+    </footer>
+  </div>
+
+  <script>
+    // Small JS for interactivity: reveal-on-scroll, project buttons, form handling
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal elements on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show') });
+    }, {threshold: 0.08});
+    reveals.forEach(r => obs.observe(r));
+
+    // Project buttons (placeholder behavior)
+    document.querySelectorAll('button[data-project]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.currentTarget.getAttribute('data-project');
+        alert('Demo: buka detail proyek #' + id + ' — Anda bisa mengganti ini dengan modal/halaman proyek.');
+      });
+    });
+
+    // Simple contact form handler (no back-end) — demonstrates validation + UX
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const data = new FormData(form);
+      const name = data.get('name').trim();
+      const email = data.get('email').trim();
+      const message = data.get('message').trim();
+
+      if (!name || !email || !message) { status.textContent = 'Mohon isi semua field.'; return }
+      // Basic email check
+      if (!/^\S+@\S+\.\S+$/.test(email)) { status.textContent = 'Masukkan email yang valid.'; return }
+
+      // Simulate successful send (replace with fetch() to API endpoint)
+      status.textContent = 'Mengirim…';
+      setTimeout(() => {
+        status.textContent = 'Pesan terkirim — terima kasih!';
+        form.reset();
+      }, 900);
+    });
+
+    // Accessibility helper: focus outlines for keyboard users only
+    function handleFirstTab(e) {
+      if (e.key === 'Tab') {
+        document.documentElement.classList.add('user-is-tabbing');
+        window.removeEventListener('keydown', handleFirstTab);
+      }
+    }
+    window.addEventListener('keydown', handleFirstTab);
+  </script>
+</body>
+</html>
 
